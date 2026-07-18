@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
         {
             bool isMoving = Mathf.Abs(horizontalInput) > 0.1f;
             anim.SetBool("isRunning", isMoving);
+            // Pass jump and fall parameters to the animator
+            anim.SetBool("isGrounded", isGrounded);
+            anim.SetFloat("yVelocity", rb.linearVelocity.y);
         }
     }
 
