@@ -16,15 +16,25 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private float horizontalInput;
     private bool isGrounded;
+    //Declaring animator:
+    private Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>(); // Grab the Animator component 
     }
 
     void Update()
     {
         isGrounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0f, groundLayer);
+
+        // Update the animator parameter based on movement input
+        if (anim != null)
+        {
+            bool isMoving = Mathf.Abs(horizontalInput) > 0.1f;
+            anim.SetBool("isRunning", isMoving);
+        }
     }
 
     void FixedUpdate()
