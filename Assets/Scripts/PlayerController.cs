@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     //Declaring animator:
     private Animator anim;
+    private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>(); // Grab the Animator component 
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -37,8 +39,25 @@ public class PlayerController : MonoBehaviour
             // Pass jump and fall parameters to the animator
             anim.SetBool("isGrounded", isGrounded);
             anim.SetFloat("yVelocity", rb.linearVelocity.y);
+
+            // Flip the character sprite based on movement direction
+            FlipSprite();
         }
     }
+
+    private void FlipSprite()
+{
+    // If moving right, face right (flipX = false)
+    if (horizontalInput > 0.1f)
+    {
+        spriteRenderer.flipX = false;
+    }
+    // If moving left, face left (flipX = true)
+    else if (horizontalInput < -0.1f)
+    {
+        spriteRenderer.flipX = true;
+    }
+}
 
     void FixedUpdate()
     {
