@@ -1,50 +1,65 @@
 fileFormatVersion: 2
-guid: e362bc6a7c79fce4db16d145d43a5550
+guid: ffc9f271fad56c243a45f100b9dc6778
 AssetOrigin:
   serializedVersion: 1
   productId: 155360
   packageName: Pixel Adventure 1
   packageVersion: 1.0
-  assetPath: Assets/Pixel Adventure 1/Assets/Main Characters/Ninja Frog/Run (32x32).png
+  assetPath: Assets/Pixel Adventure 1/Assets/Items/Fruits/Orange.png
   uploadId: 332803
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7166236263522030466
-    second: Run (32x32)_0
+      213: 4121880872312635667
+    second: Orange_0
   - first:
-      213: 2470319409956435798
-    second: Run (32x32)_1
+      213: 2344270669467322306
+    second: Orange_1
   - first:
-      213: -4540918584354326388
-    second: Run (32x32)_2
+      213: 4308106298786891140
+    second: Orange_2
   - first:
-      213: -4455822056875728695
-    second: Run (32x32)_3
+      213: 7874291611447793305
+    second: Orange_3
   - first:
-      213: -5364790588639958657
-    second: Run (32x32)_4
+      213: 3285381865569172166
+    second: Orange_4
   - first:
-      213: -1512656188830553638
-    second: Run (32x32)_5
+      213: 7043855894265817204
+    second: Orange_5
   - first:
-      213: -2754230144694611447
-    second: Run (32x32)_6
+      213: 3988426822137034836
+    second: Orange_6
   - first:
-      213: -2419971920513260168
-    second: Run (32x32)_7
+      213: -2229105888306426895
+    second: Orange_7
   - first:
-      213: 1843850012483549754
-    second: Run (32x32)_8
+      213: 6008893271325792001
+    second: Orange_8
   - first:
-      213: 241620830004830169
-    second: Run (32x32)_9
+      213: -7876212812653781381
+    second: Orange_9
   - first:
-      213: -362971539341918764
-    second: Run (32x32)_10
+      213: 3515071814446350068
+    second: Orange_10
   - first:
-      213: 2178398316516280758
-    second: Run (32x32)_11
+      213: -7989559414504384385
+    second: Orange_11
+  - first:
+      213: -5807639670500276790
+    second: Orange_12
+  - first:
+      213: 6847284126642719973
+    second: Orange_13
+  - first:
+      213: -7248848098583867319
+    second: Orange_14
+  - first:
+      213: 4913402539735777752
+    second: Orange_15
+  - first:
+      213: -3526668604636205124
+    second: Orange_16
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,7 +168,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Run (32x32)_0
+      name: Orange_0
       rect:
         serializedVersion: 2
         x: 0
@@ -168,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 561f189b59b5f244a8b7f64ffbe3e9c2
-      internalID: 7166236263522030466
+      spriteID: 55143e6280f536849b6658c969386ccc
+      internalID: 4121880872312635667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_1
+      name: Orange_1
       rect:
         serializedVersion: 2
         x: 32
@@ -190,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f24443872ca0dd5488db00fd692506e5
-      internalID: 2470319409956435798
+      spriteID: ab25a43d098bdae499a36607f6c7c685
+      internalID: 2344270669467322306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_2
+      name: Orange_2
       rect:
         serializedVersion: 2
         x: 64
@@ -212,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c52aa507ad154bf4988ddae7c8b9b595
-      internalID: -4540918584354326388
+      spriteID: a00eb127219f7d14fb4482572c1616d7
+      internalID: 4308106298786891140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_3
+      name: Orange_3
       rect:
         serializedVersion: 2
         x: 96
@@ -234,14 +249,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4307d79aa78e2af40a105edf4f7614dc
-      internalID: -4455822056875728695
+      spriteID: 9e5a1d552929d5443b825137029a7b35
+      internalID: 7874291611447793305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_4
+      name: Orange_4
       rect:
         serializedVersion: 2
         x: 128
@@ -256,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35824cb380145094885740da57794be2
-      internalID: -5364790588639958657
+      spriteID: 123bf90c47274714e91f003fff738ad1
+      internalID: 3285381865569172166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_5
+      name: Orange_5
       rect:
         serializedVersion: 2
         x: 160
@@ -278,14 +293,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc95bae097da4894785c4f0a0a3a8451
-      internalID: -1512656188830553638
+      spriteID: 65955cada2a93b946a7a909c6d2d0e09
+      internalID: 7043855894265817204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_6
+      name: Orange_6
       rect:
         serializedVersion: 2
         x: 192
@@ -300,14 +315,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b65d6cb8f479d04493a80da6d6346cb
-      internalID: -2754230144694611447
+      spriteID: 899c68a99c5566442bf5d749647e2749
+      internalID: 3988426822137034836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_7
+      name: Orange_7
       rect:
         serializedVersion: 2
         x: 224
@@ -322,14 +337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e279e5ab0014629479a55384a2b9a78c
-      internalID: -2419971920513260168
+      spriteID: 75d65e7d97efc2c4da13fbe2e84163e0
+      internalID: -2229105888306426895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_8
+      name: Orange_8
       rect:
         serializedVersion: 2
         x: 256
@@ -344,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6f70c2e02d1ffc4f892dfac0bc7497f
-      internalID: 1843850012483549754
+      spriteID: db799e54d75cb74479c7843de3a9ed77
+      internalID: 6008893271325792001
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_9
+      name: Orange_9
       rect:
         serializedVersion: 2
         x: 288
@@ -366,14 +381,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6f0c5769a1cb6440a09a7b8792ed416
-      internalID: 241620830004830169
+      spriteID: 70df20ac49f141341b8cc02b9d6161db
+      internalID: -7876212812653781381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_10
+      name: Orange_10
       rect:
         serializedVersion: 2
         x: 320
@@ -388,14 +403,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5de5a7ff6a0d7864db227c9a94bf44a5
-      internalID: -362971539341918764
+      spriteID: 782faec4bc7078a4d968eea55b5251d5
+      internalID: 3515071814446350068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Run (32x32)_11
+      name: Orange_11
       rect:
         serializedVersion: 2
         x: 352
@@ -410,8 +425,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98bc095274f290040ae47186d271ba24
-      internalID: 2178398316516280758
+      spriteID: 4fe5d58cb5a47254b89bc3cf75c404ce
+      internalID: -7989559414504384385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c5b826505ec084899c0e80b3ad2ae8
+      internalID: -5807639670500276790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ea884470ab0b046ac1f4b2c8dbe037
+      internalID: 6847284126642719973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd04943bc22e484f96a38e3dfb6a8b1
+      internalID: -7248848098583867319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f75c9623b3fb14bad5d36124aba4c8
+      internalID: 4913402539735777752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Orange_16
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c445767bc6e854692fa2bbc0f17c92
+      internalID: -3526668604636205124
       vertices: []
       indices: 
       edges: []
@@ -432,18 +557,23 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Run (32x32)_0: 7166236263522030466
-      Run (32x32)_1: 2470319409956435798
-      Run (32x32)_10: -362971539341918764
-      Run (32x32)_11: 2178398316516280758
-      Run (32x32)_2: -4540918584354326388
-      Run (32x32)_3: -4455822056875728695
-      Run (32x32)_4: -5364790588639958657
-      Run (32x32)_5: -1512656188830553638
-      Run (32x32)_6: -2754230144694611447
-      Run (32x32)_7: -2419971920513260168
-      Run (32x32)_8: 1843850012483549754
-      Run (32x32)_9: 241620830004830169
+      Orange_0: 4121880872312635667
+      Orange_1: 2344270669467322306
+      Orange_10: 3515071814446350068
+      Orange_11: -7989559414504384385
+      Orange_12: -5807639670500276790
+      Orange_13: 6847284126642719973
+      Orange_14: -7248848098583867319
+      Orange_15: 4913402539735777752
+      Orange_16: -3526668604636205124
+      Orange_2: 4308106298786891140
+      Orange_3: 7874291611447793305
+      Orange_4: 3285381865569172166
+      Orange_5: 7043855894265817204
+      Orange_6: 3988426822137034836
+      Orange_7: -2229105888306426895
+      Orange_8: 6008893271325792001
+      Orange_9: -7876212812653781381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
