@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 8f;
-    [SerializeField] private float jumpForce = 20f;
+    [SerializeField] private float jumpForce = 12f;
     
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheckPoint;
