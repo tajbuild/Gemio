@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "COINS: " + score.ToString();
+            scoreText.text = "POINTS: " + score.ToString();
         }
     }
 }
