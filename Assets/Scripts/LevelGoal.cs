@@ -8,6 +8,9 @@ public class LevelGoal : MonoBehaviour
     [SerializeField] private string nextSceneName = "Level_02";
     [SerializeField] private float transitionDelay = 1.5f; // Adjust this to match your animation length
 
+    // This static bool can be read by any other script instantly
+    public static bool isLevelComplete = false;
+
     private Animator anim;
     private bool isTriggered = false; // Prevents triggering multiple times
 
@@ -21,6 +24,9 @@ public class LevelGoal : MonoBehaviour
         if (collision.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true; // Lock the trigger so it only fires once
+            
+            // Activate the global win state!
+            isLevelComplete = true;
             
             // Fire the animation
             if (anim != null)

@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer spriteRenderer;
 
+    [Header("Power-Ups")]
+    public bool hasDoubleJumpUnlocked = false; // Unlocks when the item is picked up
+    private bool canDoubleJump; // Tracks if the player has already used their mid-air jump
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +34,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0f, groundLayer);
+
+        // Reset double jump when grounded
+        if (isGrounded)
+        {
+            canDoubleJump = true;
+        }
 
         // Update the animator parameter based on movement input
         if (anim != null)
@@ -71,10 +81,20 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && isGrounded)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-        }
+        if (context.started)
+            {
+                if (isGrounded)
+                {
+                    // First jump from the ground
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                }
+                else if (hasDoubleJumpUnlocked && canDoubleJump)
+                {
+                    // Mid-air double jump
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    canDoubleJump = false; // Consume the second jump
+                }
+            }
     }
 
     private void OnDrawGizmosSelected()
