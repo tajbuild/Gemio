@@ -12,6 +12,10 @@ public class PatrolEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private bool movingRight = false;
 
+    [Header("Combat Settings")]
+    [SerializeField] private float bounceForce = 2f;
+    [SerializeField] private float topCollisionOffset = 0.5f;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,6 +47,49 @@ public class PatrolEnemy : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+        {
+            // Check if the object colliding with the enemy is the Player
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                // Calculate if the player is physically above the enemy's center point
+                bool hitFromAbove = collision.transform.position.y > transform.position.y + topCollisionOffset;
+
+                if (hitFromAbove)
+                {
+                    // STOMP SUCCESSFUL
+                    Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+                    if (playerRb != null)
+                    {
+                        // Reset the player's downward velocity, then apply the upward bounce force
+                        playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, bounceForce);
+                    }
+
+                    // 1. Squish the enemy to half its height
+                    transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * 0.5f, transform.localScale.z);
+                    
+                    // 2. Disable the collider so the player doesn't bounce on it twice or take damage
+                    GetComponent<Collider2D>().enabled = false;
+                    
+                    // 3. Disable this script so the enemy stops running/updating
+                    this.enabled = false;
+
+                    // 4. Destroy the object after a 0.2 second delay so the squish is visible
+                    Destroy(gameObject, 0.2f);
+                }
+                else
+                {
+                    // PLAYER HIT THE SIDE OR BOTTOM
+                    // Respect the global win state we set up earlier!
+                    if (LevelGoal.isLevelComplete) return;
+
+                    // Restart the current level
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+            }
+        }
+    
+/*
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // If the enemy bumps into the player, reset the level
         if (collision.gameObject.CompareTag("Player"))
@@ -51,7 +98,7 @@ public class PatrolEnemy : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-
+*/
     private void OnDrawGizmos()
     {
         // Draws a little red circle in the editor scene view to help you see the wall detector
