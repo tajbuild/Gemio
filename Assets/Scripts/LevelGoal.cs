@@ -17,6 +17,9 @@ public class LevelGoal : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
+
+        // Reset the win state every time a level starts
+        isLevelComplete = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
