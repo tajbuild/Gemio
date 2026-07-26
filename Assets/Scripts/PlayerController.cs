@@ -93,6 +93,12 @@ public class PlayerController : MonoBehaviour
                     // Mid-air double jump
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     canDoubleJump = false; // Consume the second jump
+
+                    // Trigger the double jump animation
+                    if (anim != null)
+                    {
+                        anim.SetTrigger("DoubleJump");
+                    }
                 }
             }
     }
