@@ -13,7 +13,7 @@ public class PatrolEnemy : MonoBehaviour
     private bool movingRight = false;
 
     [Header("Combat Settings")]
-    [SerializeField] private float bounceForce = 2f;
+    [SerializeField] private float bounceForce = 8f;
     [SerializeField] private float topCollisionOffset = 0.5f;
 
     private void Start()
