@@ -24,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public bool hasDoubleJumpUnlocked = false; // Unlocks when the item is picked up
     private bool canDoubleJump; // Tracks if the player has already used their mid-air jump
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip doubleJumpSound;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -87,12 +92,24 @@ public class PlayerController : MonoBehaviour
                 {
                     // First jump from the ground
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                    
+                    // Play standard jump sound
+                    if (audioSource != null && jumpSound != null)
+                    {
+                        audioSource.PlayOneShot(jumpSound);
+                    }
                 }
                 else if (hasDoubleJumpUnlocked && canDoubleJump)
                 {
                     // Mid-air double jump
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
                     canDoubleJump = false; // Consume the second jump
+
+                    // Play double jump sound
+                    if (audioSource != null && doubleJumpSound != null)
+                    {
+                        audioSource.PlayOneShot(doubleJumpSound);
+                    }
 
                     // Trigger the double jump animation
                     if (anim != null)
