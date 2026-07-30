@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
   coinValue: 1
+  pickupSound: {fileID: 8300000, guid: 2de52f440163ba24b9534df8626a21d0, type: 3}
 --- !u!95 &2191386624360382299
 Animator:
   serializedVersion: 7

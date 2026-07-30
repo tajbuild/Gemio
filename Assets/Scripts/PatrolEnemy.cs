@@ -16,6 +16,8 @@ public class PatrolEnemy : MonoBehaviour
     [SerializeField] private float bounceForce = 8f;
     [SerializeField] private float topCollisionOffset = 0.5f;
 
+    [SerializeField] private AudioClip squishSound; // Drag your sound here in the Inspector
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -72,6 +74,8 @@ public class PatrolEnemy : MonoBehaviour
                     
                     // 3. Disable this script so the enemy stops running/updating
                     this.enabled = false;
+
+                    AudioSource.PlayClipAtPoint(squishSound, Camera.main.transform.position, 1f);
 
                     // 4. Destroy the object after a 0.2 second delay so the squish is visible
                     Destroy(gameObject, 0.2f);

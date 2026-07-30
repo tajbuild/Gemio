@@ -5682,7 +5682,7 @@ PrefabInstance:
     - target: {fileID: 6511458036047890728, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
       propertyPath: doubleJumpSound
       value: 
-      objectReference: {fileID: 8300000, guid: 777531eb4da4c104ba3e7c07a46f9305, type: 3}
+      objectReference: {fileID: 8300000, guid: f4ae8d7abd6a8f04d989261923e7f811, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

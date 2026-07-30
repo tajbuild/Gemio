@@ -210,6 +210,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  bounceForce: 8
+  topCollisionOffset: 0.5
+  squishSound: {fileID: 8300000, guid: dd6c3cf201cb0fe4897d0ca87b1bacdf, type: 3}
 --- !u!95 &4527026617697170158
 Animator:
   serializedVersion: 7
