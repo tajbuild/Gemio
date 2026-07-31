@@ -14,7 +14,8 @@ public class CoinPickup : MonoBehaviour
             // 1. Play the sound independently of this object
             if (pickupSound != null)
             {
-                AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, 1f);            }
+                AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, 1f);            
+            }
             
             // 2. Add points to the Game Manager
             if (GameManager.Instance != null)

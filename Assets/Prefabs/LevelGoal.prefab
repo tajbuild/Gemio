@@ -153,3 +153,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGoal
   nextSceneName: Level_02
+  transitionDelay: 4
+  pickupSound: {fileID: 8300000, guid: 0a25973836d465a4eb21215b1477c4fe, type: 3}
