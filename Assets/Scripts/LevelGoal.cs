@@ -32,14 +32,9 @@ public class LevelGoal : MonoBehaviour
             isTriggered = true; // Lock the trigger so it only fires once
             
             // 1. Stop the Background Music
-            GameObject audioMgr = GameObject.Find("AudioManager");
-            if (audioMgr != null)
+            if (AudioManager.Instance != null)
             {
-                AudioSource bgm = audioMgr.GetComponent<AudioSource>();
-                if (bgm != null)
-                {
-                    bgm.Stop();
-                }
+                AudioManager.Instance.StopMusic();
             }
             
             // Activate the global win state!

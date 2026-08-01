@@ -521,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260645745}
   - component: {fileID: 260645744}
+  - component: {fileID: 260645746}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -640,6 +641,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &260645746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260645743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ef1d830f5652a4bb2522887fa2bafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
 --- !u!1001 &292155457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -841,7 +854,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 423300925}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1043466764}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: RestartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &423300925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2832,6 +2857,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   scoreText: {fileID: 191495504}
+  uiManager: {fileID: 1043466764}
 --- !u!4 &711979981
 Transform:
   m_ObjectHideFlags: 0
@@ -3690,6 +3716,7 @@ GameObject:
   - component: {fileID: 1043466762}
   - component: {fileID: 1043466761}
   - component: {fileID: 1043466760}
+  - component: {fileID: 1043466764}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -3781,6 +3808,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1043466764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043466759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e4b4e35504d7c24799bfb22504d2322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  gameOverPanel: {fileID: 1768320084}
 --- !u!1001 &1071154363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4312,6 +4352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0798404cc4ec8834c9230192c6492d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
+  deathSound: {fileID: 0}
 --- !u!61 &1290248415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4628,7 +4669,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1484724818}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1043466764}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1484724818
 MonoBehaviour:
   m_ObjectHideFlags: 0

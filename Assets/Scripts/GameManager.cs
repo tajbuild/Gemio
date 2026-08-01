@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     private int score = 0;
 
+    [Header("Dependencies")]
+    [SerializeField] private UIManager uiManager; // Link this in the Inspector
+
     private void Awake()
     {
         // Simple Singleton pattern: Ensure there is only ever one GameManager
@@ -39,6 +42,21 @@ public class GameManager : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = "POINTS: " + score.ToString();
+        }
+    }
+
+    // New Game Over Logic
+    public void TriggerGameOver()
+    {
+        Debug.Log("Game Over Triggered!");
+        
+        // Freeze the game physics
+        Time.timeScale = 0f; 
+
+        // Tell the UI layer to show the screen
+        if (uiManager != null)
+        {
+            uiManager.ShowGameOverScreen();
         }
     }
 }
