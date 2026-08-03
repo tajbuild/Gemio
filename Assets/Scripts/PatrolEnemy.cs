@@ -17,6 +17,7 @@ public class PatrolEnemy : MonoBehaviour
     [SerializeField] private float topCollisionOffset = 0.5f;
 
     [SerializeField] private AudioClip squishSound; // Drag your sound here in the Inspector
+    [SerializeField] private AudioClip deathSound;  // Sound for when the enemy hits you
 
     private void Start()
     {
@@ -86,23 +87,24 @@ public class PatrolEnemy : MonoBehaviour
                     // Respect the global win state we set up earlier!
                     if (LevelGoal.isLevelComplete) return;
 
-                    // Restart the current level
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                // Stop the Background Music cleanly
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.StopMusic();
+                }
+                
+                // Play the death sound
+                if (deathSound != null)
+                {
+                    AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 1f);
+                }
+
+                // Trigger the GameManager's death state instead of instantly reloading
+                GameManager.Instance.TriggerGameOver();                
                 }
             }
         }
     
-/*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // If the enemy bumps into the player, reset the level
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Player hit by enemy! Restarting...");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-    }
-*/
     private void OnDrawGizmos()
     {
         // Draws a little red circle in the editor scene view to help you see the wall detector
