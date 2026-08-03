@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CoinPickup
   coinValue: 1
   pickupSound: {fileID: 8300000, guid: a6a2ba42f88f9a640b5b5e482446aa9d, type: 3}
+  burstPrefab: {fileID: 2608907564383721950, guid: 5d6db361e2321094286e1b4d4678eb37, type: 3}
 --- !u!95 &2191386624360382299
 Animator:
   serializedVersion: 7
