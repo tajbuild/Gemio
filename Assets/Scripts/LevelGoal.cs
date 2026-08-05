@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 public class LevelGoal : MonoBehaviour
 {
     [Header("Level Progression")]
-    [SerializeField] private string nextSceneName = "Level_02";
+
     [SerializeField] private float transitionDelay = 4f; // Adjust this to match your animation length
 
-    [SerializeField] private AudioClip pickupSound; // Drag your sound here in the Inspector
+    [SerializeField] private AudioClip winSound; // Drag your sound here in the Inspector
 
 
     // This static bool can be read by any other script instantly
@@ -30,20 +30,19 @@ public class LevelGoal : MonoBehaviour
         if (collision.CompareTag("Player") && !isTriggered)
         {
             isTriggered = true; // Lock the trigger so it only fires once
-            
+             // Activate the global win state!
+            isLevelComplete = true;
+
             // 1. Stop the Background Music
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.StopMusic();
-            }
+            }           
             
-            // Activate the global win state!
-            isLevelComplete = true;
-            
-            // Play Pickup Sound 
-            if (pickupSound != null)
+            // Play Win Sound 
+            if (winSound != null)
             {
-                AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, 0.7f);            
+                AudioSource.PlayClipAtPoint(winSound, Camera.main.transform.position, 0.7f);            
             }
 
             // Fire the animation
@@ -52,8 +51,14 @@ public class LevelGoal : MonoBehaviour
                 anim.SetTrigger("Activate");
             }
 
-            Debug.Log("Level Complete! Delaying load for animation...");
-            
+            // Freeze the player's movement (optional, but highly recommended)
+            Rigidbody2D playerRb = collision.GetComponent<Rigidbody2D>();
+            if (playerRb != null)
+            {
+                playerRb.linearVelocity = Vector2.zero;
+                playerRb.simulated = false; // Completely stops physics on the player
+            }
+
             // Start the delay timer before loading the scene
             StartCoroutine(LoadNextLevelDelayed());
         }
@@ -65,7 +70,19 @@ public class LevelGoal : MonoBehaviour
         // Wait for the specified number of seconds
         yield return new WaitForSeconds(transitionDelay);
         
-        // Load the next level
-        SceneManager.LoadScene(nextSceneName);
+        // Calculate what the next scene index is based on the Build Settings
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        // Check if a next level actually exists in the Build Settings
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            // If there are no more levels, send the player back to the Main Menu
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

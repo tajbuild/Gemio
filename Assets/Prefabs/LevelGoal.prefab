@@ -152,6 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6448bf9b909d36f4b93059d33ba681a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGoal
-  nextSceneName: Level_02
   transitionDelay: 4
-  pickupSound: {fileID: 8300000, guid: 0a25973836d465a4eb21215b1477c4fe, type: 3}
+  winSound: {fileID: 8300000, guid: 0a25973836d465a4eb21215b1477c4fe, type: 3}
