@@ -3190,6 +3190,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a109a9ab06de5c34786d13d2143acbde, type: 3}
+--- !u!114 &1554338040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6370732918978590050, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+  m_PrefabInstance: {fileID: 1667843029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1595360174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3830,6 +3841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3473833649264172689, guid: 6b56d812160d1b1458e888ab8b1383a0, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1554338040}
     - target: {fileID: 3473833649264172689, guid: 6b56d812160d1b1458e888ab8b1383a0, type: 3}
       propertyPath: uiManager
       value: 

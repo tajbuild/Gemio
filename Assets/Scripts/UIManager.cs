@@ -8,6 +8,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI levelText;
 
+    [Header("Powerups")]
+    [SerializeField] private GameObject doubleJumpIcon; // Drag the Image here in the Inspector
+
     private void Start()
     {
         // Grabs the exact name of your scene file (e.g., "Level_01")
@@ -46,5 +49,13 @@ public class UIManager : MonoBehaviour
         // Reset time and load the menu (assumes your menu scene is named "MainMenu")
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu"); 
+    }
+
+    public void EnableDoubleJumpIcon()
+    {
+        if (doubleJumpIcon != null)
+        {
+            doubleJumpIcon.SetActive(true);
+        }
     }
 }

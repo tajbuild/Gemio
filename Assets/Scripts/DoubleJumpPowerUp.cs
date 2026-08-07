@@ -22,6 +22,7 @@ public class DoubleJumpPowerUp : MonoBehaviour
                     AudioSource.PlayClipAtPoint(pickupSound, Camera.main.transform.position, 1f);            
                 }
 
+                GameManager.Instance.EnableDoubleJumpUI();
                 // Destroy the power-up object
                 Destroy(gameObject);
             }

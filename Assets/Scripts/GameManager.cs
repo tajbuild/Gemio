@@ -59,4 +59,13 @@ public class GameManager : MonoBehaviour
             uiManager.ShowGameOverScreen();
         }
     }
+
+    // New pass-through method for the UI
+    public void EnableDoubleJumpUI()
+    {
+        if (uiManager != null)
+        {
+            uiManager.EnableDoubleJumpIcon();
+        }
+    }
 }
