@@ -8,11 +8,41 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI levelText;
 
+    // Pause button/panel implementation:
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject pauseButton;
+    private bool isPaused;
+    private bool isGameOver;
+
     [Header("Powerups")]
     [SerializeField] private GameObject doubleJumpIcon; // Drag the Image here in the Inspector
 
+    private void Awake()
+    {
+        if (gameOverPanel == null)
+        {
+            Debug.LogError("UIManager: Game Over Panel is not assigned.", this);
+        }
+
+        if (pausePanel == null)
+        {
+            Debug.LogError("UIManager: Pause Panel is not assigned.", this);
+        }
+
+        if (pauseButton == null)
+        {
+            Debug.LogError("UIManager: Pause Button is not assigned.", this);
+        }
+    }
+
     private void Start()
     {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+        pausePanel.SetActive(false);
+        pauseButton.SetActive(true);
+
         // Grabs the exact name of your scene file (e.g., "Level_01")
         string sceneName = SceneManager.GetActiveScene().name;
         
@@ -29,9 +59,31 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (LevelGoal.isLevelComplete)
+        {
+            pauseButton.SetActive(false);
+            return;
+        }
+    }
+
     public void ShowGameOverScreen()
     {
-        if (gameOverPanel != null)
+        isGameOver = true;
+        isPaused = false;
+        
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
+
+        if (pauseButton != null)
+        {
+            pauseButton.SetActive(false);
+        }
+
+        if (gameOverPanel != null)         
         {
             gameOverPanel.SetActive(true);
         }
@@ -40,14 +92,14 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
         // Reset time to normal just in case we paused the game upon death
-        Time.timeScale = 1f; 
+        RestoreGameTime();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMainMenu()
     {
         // Reset time and load the menu (assumes your menu scene is named "MainMenu")
-        Time.timeScale = 1f;
+        RestoreGameTime();
         SceneManager.LoadScene("MainMenu"); 
     }
 
@@ -57,5 +109,59 @@ public class UIManager : MonoBehaviour
         {
             doubleJumpIcon.SetActive(true);
         }
+    }
+
+    public void TogglePause()
+    {
+        if (isGameOver || LevelGoal.isLevelComplete)
+        {
+            return;
+        }
+
+        if (isPaused)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
+    {
+        if (isPaused || isGameOver || LevelGoal.isLevelComplete)
+        {
+            return;
+        }
+
+        isPaused = true;
+        pausePanel.SetActive(true);
+        pauseButton.SetActive(false);
+
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+    }
+
+    public void ResumeGame()
+    {
+        if (!isPaused)
+        {
+            return;
+        }
+
+        isPaused = false;
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+
+        pausePanel.SetActive(false);
+        pauseButton.SetActive(true);
+    }
+
+    private void RestoreGameTime()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
     }
 }
