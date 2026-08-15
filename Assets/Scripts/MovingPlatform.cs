@@ -1,44 +1,65 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private Transform[] waypoints;
     [SerializeField] private float speed = 3f;
-    private int currentWaypointIndex = 0;
+    private Rigidbody2D rb;
+    private int currentWaypointIndex;
 
-    void Update()
+    public Vector2 CurrentVelocity { get; private set; }
+    
+    
+    private void Awake()
     {
-        if (waypoints.Length == 0) return;
+        rb = GetComponent<Rigidbody2D>();
 
-        // Move the platform toward the current waypoint
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].position, speed * Time.deltaTime);
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("MovingPlatform requires at least one waypoint.", this);
 
-        // Check if we reached the waypoint
-        if (Vector2.Distance(transform.position, waypoints[currentWaypointIndex].position) < 0.1f)
+            enabled = false;
+            return;
+        }
+
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            if (waypoints[i] == null)
+            {
+                Debug.LogError($"MovingPlatform waypoint {i} is not assigned.", this);
+
+                enabled = false;
+                return;
+            }
+        }
+    }
+
+
+    private void FixedUpdate()
+    {
+        Vector2 targetPosition = waypoints[currentWaypointIndex].position;
+
+        Vector2 nextPosition = Vector2.MoveTowards(rb.position, targetPosition, speed * Time.fixedDeltaTime);
+
+        CurrentVelocity = (nextPosition - rb.position) / Time.fixedDeltaTime;
+
+        rb.MovePosition(nextPosition);
+
+        if ((nextPosition - targetPosition).sqrMagnitude < 0.0001f)
         {
             currentWaypointIndex++;
+
             if (currentWaypointIndex >= waypoints.Length)
             {
-                currentWaypointIndex = 0; // Loop back to the first waypoint
+                currentWaypointIndex = 0;
             }
         }
     }
 
     // Parent the player to the platform so they don't slide off
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnDisable()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(transform);
-        }
-    }
-
-    // Unparent the player when they jump off
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.transform.SetParent(null);
-        }
+        CurrentVelocity = Vector2.zero;
     }
 }

@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip doubleJumpSound;
 
+    //MovingPlatform
+    private MovingPlatform currentPlatform;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +41,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        isGrounded = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0f, groundLayer);
+        Collider2D groundCollider = Physics2D.OverlapBox(groundCheckPoint.position, groundCheckSize, 0f, groundLayer);
+
+        isGrounded = groundCollider != null;
+
+        currentPlatform = isGrounded ? groundCollider.GetComponentInParent<MovingPlatform>() : null;
 
         // Reset double jump when grounded
         if (isGrounded)
@@ -74,9 +81,11 @@ public class PlayerController : MonoBehaviour
     }
 }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        float platformVelocityX = currentPlatform != null ? currentPlatform.CurrentVelocity.x : 0f;
+
+        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed + platformVelocityX, rb.linearVelocity.y);
     }
 
     public void OnMove(InputAction.CallbackContext context)
