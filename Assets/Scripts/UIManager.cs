@@ -93,6 +93,7 @@ public class UIManager : MonoBehaviour
     {
         // Reset time to normal just in case we paused the game upon death
         RestoreGameTime();
+        RunState.RestoreLevelStartScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

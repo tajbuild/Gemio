@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Score Tracking")]
     [SerializeField] private TextMeshProUGUI scoreText;
-    private int score = 0;
 
     [Header("Dependencies")]
     [SerializeField] private UIManager uiManager; // Link this in the Inspector
@@ -28,12 +27,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        RunState.BeginLevel();
         UpdateScoreUI();
     }
 
     public void AddScore(int amount)
     {
-        score += amount;
+        RunState.AddScore(amount);
         UpdateScoreUI();
     }
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "POINTS: " + score.ToString();
+            scoreText.text = "POINTS: " + RunState.Score;
         }
     }
 

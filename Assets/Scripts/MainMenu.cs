@@ -13,6 +13,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
+        RunState.StartNewRun();
         // Reset time scale just in case coming from a paused state
         Time.timeScale = 1f; 
         SceneManager.LoadScene(firstLevelName);
