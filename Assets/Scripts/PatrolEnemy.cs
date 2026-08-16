@@ -19,6 +19,8 @@ public class PatrolEnemy : MonoBehaviour
     [SerializeField] private AudioClip squishSound; // Drag your sound here in the Inspector
     [SerializeField] private AudioClip deathSound;  // Sound for when the enemy hits you
 
+    [SerializeField] private int contactDamage = 1;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -83,24 +85,14 @@ public class PatrolEnemy : MonoBehaviour
                 }
                 else
                 {
-                    // PLAYER HIT THE SIDE OR BOTTOM
-                    // Respect the global win state we set up earlier!
                     if (LevelGoal.isLevelComplete) return;
+                    
+                    PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
 
-                // Stop the Background Music cleanly
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.StopMusic();
-                }
-                
-                // Play the death sound
-                if (deathSound != null)
-                {
-                    AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, 1f);
-                }
-
-                // Trigger the GameManager's death state instead of instantly reloading
-                GameManager.Instance.TriggerGameOver();                
+                    if (playerHealth != null)
+                    {
+                        playerHealth.TakeDamage(contactDamage);
+                    }               
                 }
             }
         }

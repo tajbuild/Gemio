@@ -68,4 +68,12 @@ public class GameManager : MonoBehaviour
             uiManager.EnableDoubleJumpIcon();
         }
     }
+
+    public void UpdateHealthUI(int currentHealth)
+    {
+        if (uiManager != null)
+        {
+            uiManager.UpdateHealthUI(currentHealth);
+        }
+    }
 }

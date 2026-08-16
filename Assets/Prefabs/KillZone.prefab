@@ -91,4 +91,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0798404cc4ec8834c9230192c6492d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hazard
-  deathSound: {fileID: 8300000, guid: 3afb829b5783ed2439d7b784dc70adcf, type: 3}
+  damage: 1
+  instantKill: 1
