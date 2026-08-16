@@ -17,6 +17,11 @@ public class UIManager : MonoBehaviour
     [Header("Powerups")]
     [SerializeField] private GameObject doubleJumpIcon; // Drag the Image here in the Inspector
 
+    [Header("Health")]
+    [SerializeField] private GameObject[] healthIcons;
+
+
+
     private void Awake()
     {
         if (gameOverPanel == null)
@@ -164,5 +169,21 @@ public class UIManager : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1f;
         AudioListener.pause = false;
+    }
+
+    public void UpdateHealthUI(int currentHealth)
+    {
+        if (healthIcons == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < healthIcons.Length; i++)
+        {
+            if (healthIcons[i] != null)
+            {
+                healthIcons[i].SetActive(i < currentHealth);
+            }
+        }
     }
 }
