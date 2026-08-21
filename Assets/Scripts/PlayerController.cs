@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>(); // Grab the Animator component 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        // Restore the upgrade when a new Player is created after changing scenes.
+        hasDoubleJumpUnlocked = RunState.HasDoubleJumpUnlocked;
     }
 
     void Update()

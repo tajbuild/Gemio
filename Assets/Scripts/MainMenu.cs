@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     // Make sure your first level's exact name is typed here
-    [SerializeField] private string firstLevelName = "Level_01"; 
+    // Switch firstLevelName back to Level_01
+    [SerializeField] private string firstLevelName = "Sandbox"; 
 
     private void Start()
     {

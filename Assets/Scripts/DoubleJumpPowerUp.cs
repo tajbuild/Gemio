@@ -5,6 +5,16 @@ public class DoubleJumpPowerUp : MonoBehaviour
     
     [SerializeField] private AudioClip pickupSound; // Drag your sound here in the Inspector
 
+    private void Start()
+    {
+        // If this upgrade was already collected before a retry or scene reload,
+        // remove the duplicate power-up.
+        if (RunState.HasDoubleJumpUnlocked)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -13,7 +23,9 @@ public class DoubleJumpPowerUp : MonoBehaviour
             
             if (player != null)
             {
-                // Unlock the double jump
+                // Save the upgrade for the remainder of the run.
+                RunState.UnlockDoubleJump();
+                // Unlock it immediately on the current Player.
                 player.hasDoubleJumpUnlocked = true;
                 
                 // Play Pickup Sound 

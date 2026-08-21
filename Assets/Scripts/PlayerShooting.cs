@@ -40,8 +40,13 @@ public class PlayerShooting : MonoBehaviour
 
     private void Fire()
     {
-        // Time scale is zero while paused, on game over or after level completion.
-        if (Time.timeScale == 0f) return;
+        
+        // Ignore firing input until the energy weapon has been collected.
+        if (!RunState.HasEnergyWeaponUnlocked) return;
+
+        // Time scale is zero while paused, on game over or after level completion. 
+        // OR Stop firing once levelgoal is hit.
+        if (Time.timeScale == 0f || LevelGoal.isLevelComplete) return;
 
         // Prevent the player from firing faster than the cooldown allows.
         if (Time.time < nextFireTime) return;

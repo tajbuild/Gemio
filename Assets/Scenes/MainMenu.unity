@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2031cf5b0b2c24a9bf7a930411a763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  firstLevelName: Level_01
+  firstLevelName: Sandbox
 --- !u!4 &1195496837
 Transform:
   m_ObjectHideFlags: 0
