@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7537889556870990389}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 1293742903713040033}
   - component: {fileID: 5963977652895358852}
   - component: {fileID: 4527026617697170158}
-  m_Layer: 0
+  - component: {fileID: 7731519389840651144}
+  m_Layer: 7
   m_Name: PatrolEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,6 +215,7 @@ MonoBehaviour:
   topCollisionOffset: 0.5
   squishSound: {fileID: 8300000, guid: dd6c3cf201cb0fe4897d0ca87b1bacdf, type: 3}
   deathSound: {fileID: 8300000, guid: 3afb829b5783ed2439d7b784dc70adcf, type: 3}
+  contactDamage: 1
 --- !u!95 &4527026617697170158
 Animator:
   serializedVersion: 7
@@ -236,3 +238,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7731519389840651144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6465996602627703896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d469c8976de11f4b8b31fac08f7849b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 1

@@ -11,6 +11,8 @@ public class EnergyProjectile : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
     [SerializeField] private GameObject explosionEffectPrefab;
 
+    [SerializeField, Min(1)] private int damage = 1;
+
     private Rigidbody2D rb;
     private bool hasExploded;
 
@@ -35,11 +37,24 @@ public class EnergyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Ignore objects whose layer is not included in Hit Layers.
-        // This prevents coins, power-ups and unrelated triggers
-        // from accidentally destroying the projectile.
+        // Prevent one projectile from damaging multiple colliders during the same physics frame.
+        if (hasExploded) return;
+
+        // Ignore objects whose layers are not selected under Hit Layers.
         if ((hitLayers.value & (1 << other.gameObject.layer)) == 0) return;
 
+        // Look for EnemyHealth on the collider or its parent.
+        // GetComponentInParent also works if the enemy's collider
+        // is located on a child object.
+        EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(damage);
+        }
+
+        // The projectile also explodes when hitting ordinary terrain,
+        // even though terrain does not have an EnemyHealth component.
         Explode();
     }
 
