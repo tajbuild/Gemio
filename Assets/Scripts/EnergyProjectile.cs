@@ -43,14 +43,14 @@ public class EnergyProjectile : MonoBehaviour
         // Ignore objects whose layers are not selected under Hit Layers.
         if ((hitLayers.value & (1 << other.gameObject.layer)) == 0) return;
 
-        // Look for EnemyHealth on the collider or its parent.
-        // GetComponentInParent also works if the enemy's collider
-        // is located on a child object.
-        EnemyHealth enemyHealth = other.GetComponentInParent<EnemyHealth>();
+        // Look for any component that implements IDamageable.
+        // This allows the same projectile to damage regular enemies,
+        // bosses and future damageable objects without special cases.
+        IDamageable damageable = other.GetComponentInParent<IDamageable>();
 
-        if (enemyHealth != null)
+        if (damageable != null)
         {
-            enemyHealth.TakeDamage(damage);
+            damageable.TakeDamage(damage);
         }
 
         // The projectile also explodes when hitting ordinary terrain,

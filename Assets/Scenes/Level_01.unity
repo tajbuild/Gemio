@@ -5530,6 +5530,10 @@ PrefabInstance:
       value: KillZone
       objectReference: {fileID: 0}
     - target: {fileID: 1098823625090931927, guid: c3af6b750e871ca4983ba94e6c39f096, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1098823625090931927, guid: c3af6b750e871ca4983ba94e6c39f096, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
