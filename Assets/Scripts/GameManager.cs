@@ -69,6 +69,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EnableFireButtonUI()
+    {
+        if (uiManager != null)
+        {
+            uiManager.EnableFireButton();
+        }
+    }
+    
     public void UpdateHealthUI(int currentHealth)
     {
         if (uiManager != null)

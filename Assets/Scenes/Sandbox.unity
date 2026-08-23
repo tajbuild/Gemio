@@ -2067,6 +2067,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1586679931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8026776741939139739, guid: 1b7485908186d2b4fa53f53533a19762, type: 3}
+  m_PrefabInstance: {fileID: 719767593997720946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1599766799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,17 +2432,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3045361804180012857, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
   m_PrefabInstance: {fileID: 2427219641116858404}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2091435032 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 577983262362339248, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-  m_PrefabInstance: {fileID: 2427219641116858404}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a69d8eb62d26fa44d850917f1f8bbf93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
 --- !u!1001 &719767593997720946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2543,38 +2537,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6705669349963622947, guid: a65610598d755564fa46c1a899d53afe, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2655,22 +2617,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7544619716921705705, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: fireButton
+      value: 
+      objectReference: {fileID: 1586679931}
     - target: {fileID: 7783822475207238418, guid: a65610598d755564fa46c1a899d53afe, type: 3}
       propertyPath: m_Name
       value: UIManager
@@ -2745,42 +2695,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2091435032}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnAttack
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerShooting, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2302832383185161469, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3045361804180012857, guid: ad63e805964f48f47a2853e64af2e0a5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.08

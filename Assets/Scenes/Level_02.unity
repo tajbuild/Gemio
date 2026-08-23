@@ -9454,6 +9454,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7485908186d2b4fa53f53533a19762, type: 3}
+--- !u!1 &719767593997720947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8026776741939139739, guid: 1b7485908186d2b4fa53f53533a19762, type: 3}
+  m_PrefabInstance: {fileID: 719767593997720946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &893266256332508898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9462,6 +9467,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139243999851218460, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215795300986480420, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6370732918978590050, guid: a65610598d755564fa46c1a899d53afe, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -9554,6 +9591,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860313730297086279, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544619716921705705, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: fireButton
+      value: 
+      objectReference: {fileID: 719767593997720947}
     - target: {fileID: 7783822475207238418, guid: a65610598d755564fa46c1a899d53afe, type: 3}
       propertyPath: m_Name
       value: UIManager

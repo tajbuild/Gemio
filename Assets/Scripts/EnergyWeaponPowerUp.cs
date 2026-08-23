@@ -21,6 +21,12 @@ public class EnergyWeaponPowerUp : MonoBehaviour
         // Save the weapon unlock for the remainder of the run.
         RunState.UnlockEnergyWeapon();
 
+        // Reveal the Android Fire button immediately.
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.EnableFireButtonUI();
+        }
+
         if (pickupSound != null)
         {
             // Playing at the camera position ensures the 2D pickup sound

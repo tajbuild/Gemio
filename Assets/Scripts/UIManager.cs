@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Powerups")]
     [SerializeField] private GameObject doubleJumpIcon; // Drag the Image here in the Inspector
+    [SerializeField] private GameObject energyWeaponIcon; // Drag the Image here in the Inspector
+    [SerializeField] private GameObject fireButton;
+    
 
     [Header("Health")]
     [SerializeField] private GameObject[] healthIcons;
@@ -37,6 +40,16 @@ public class UIManager : MonoBehaviour
         if (pauseButton == null)
         {
             Debug.LogError("UIManager: Pause Button is not assigned.", this);
+        }
+
+        if (fireButton == null)
+        {
+            Debug.LogError("UIManager: Fire Button is not assigned.", this);
+        }
+        
+        if (energyWeaponIcon == null)
+        {
+            Debug.LogError("UIManager: Energy Weapon Icon is not assigned.", this);
         }
     }
 
@@ -62,6 +75,14 @@ public class UIManager : MonoBehaviour
         {
             gameOverPanel.SetActive(false);
         }
+        
+        // Display each power-up control only if it is currently unlocked.
+        if (doubleJumpIcon != null)
+        {
+            doubleJumpIcon.SetActive(RunState.HasDoubleJumpUnlocked);
+        }
+
+        SetEnergyWeaponUI(RunState.HasEnergyWeaponUnlocked);
     }
 
     private void Update()
@@ -109,6 +130,25 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); 
     }
 
+    public void EnableFireButton()
+    {
+        SetEnergyWeaponUI(true);
+    }
+
+    private void SetEnergyWeaponUI(bool isUnlocked)
+    {
+        // Keep the Fire button and weapon icon in the same state.
+        if (fireButton != null)
+        {
+            fireButton.SetActive(isUnlocked);
+        }
+
+        if (energyWeaponIcon != null)
+        {
+            energyWeaponIcon.SetActive(isUnlocked);
+        }
+    }
+    
     public void EnableDoubleJumpIcon()
     {
         if (doubleJumpIcon != null)

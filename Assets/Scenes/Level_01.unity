@@ -4554,6 +4554,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7485908186d2b4fa53f53533a19762, type: 3}
+--- !u!1 &932672086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8026776741939139739, guid: 1b7485908186d2b4fa53f53533a19762, type: 3}
+  m_PrefabInstance: {fileID: 932672085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1064792512
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5186,6 +5191,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544619716921705705, guid: a65610598d755564fa46c1a899d53afe, type: 3}
+      propertyPath: fireButton
+      value: 
+      objectReference: {fileID: 932672086}
     - target: {fileID: 7783822475207238418, guid: a65610598d755564fa46c1a899d53afe, type: 3}
       propertyPath: m_Name
       value: UIManager
