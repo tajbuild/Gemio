@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 1
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -442,6 +442,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossHealth
   maxHealth: 10
   healthSlider: {fileID: 7202562477975155254}
+  healthBarObject: {fileID: 196472003490805606}
+  hitFlashColor: {r: 1, g: 0.35, b: 0.35, a: 1}
+  hitFlashDuration: 0.1
+  hitSound: {fileID: 8300000, guid: 9afbd0532b75f644cb2e810a07a4b638, type: 3}
+  deathSound: {fileID: 8300000, guid: 3cc23c26fb594ad4fb0bedb042731330, type: 3}
+  deathEffectPrefab: {fileID: 6180454531109098129, guid: 22a684701d0bb47448841ef792ec4c9f, type: 3}
+  deathEffectScale: 1.5
+  destroyDelay: 3
+  onBossDefeated:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &4764363327233487804
 Rigidbody2D:
   serializedVersion: 5

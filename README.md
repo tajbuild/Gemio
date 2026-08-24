@@ -25,3 +25,7 @@ To run this project locally:
 2. Open the project folder via the Unity Hub (ensure you are using Unity 6).
 3. Open the `MainMenu` or `Level_01` scene located in the `Scenes` folder.
 4. Hit Play!
+
+## Third-Party Assets
+
+See [CREDITS.md](CREDITS.md) for music and sound-effect attribution.

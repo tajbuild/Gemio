@@ -1,38 +1,77 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour, IDamageable
 {
+    [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 10;
+
+    [Header("Health Bar")]
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private GameObject healthBarObject;
+
+    [Header("Hit Feedback")]
+    [SerializeField] private Color hitFlashColor = new Color(1f, 0.35f, 0.35f);
+    [SerializeField] private float hitFlashDuration = 0.1f;
+    [SerializeField] private AudioClip hitSound;
+
+    [Header("Death Feedback")]
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private GameObject deathEffectPrefab;
+    [SerializeField] private float deathEffectScale = 1.5f;
+    [SerializeField] private float destroyDelay = 0.75f;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent onBossDefeated;
 
     private int currentHealth;
     private bool isDead;
 
-    // These will allow the health bar to read the boss's health later.
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private Collider2D bossCollider;
+    private BossController bossController;
+
+    private Color originalColor;
+    private Coroutine hitFlashCoroutine;
+
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
-
-    [Header("Health Bar")]
-    [SerializeField] private Slider healthSlider;
 
     private void Awake()
     {
         currentHealth = maxHealth;
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        bossCollider = GetComponent<Collider2D>();
+        bossController = GetComponent<BossController>();
+
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+
         if (healthSlider == null)
         {
             Debug.LogError("BossHealth: Health Slider is not assigned.", this);
-            return;
+        }
+        else
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
         }
 
-        // Configure the bar from the boss's actual health values.
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        if (healthBarObject == null)
+        {
+            Debug.LogError("BossHealth: Health Bar Object is not assigned.", this);
+        }
     }
 
     public void TakeDamage(int damage)
     {
-        // Ignore invalid damage and additional hits after death.
         if (damage <= 0 || isDead) return;
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
@@ -41,28 +80,103 @@ public class BossHealth : MonoBehaviour, IDamageable
         {
             healthSlider.value = currentHealth;
         }
-        // Temporary diagnostic message until we create the health bar.
-        Debug.Log("Boss health: " + currentHealth + "/" + maxHealth, this);
 
         if (currentHealth == 0)
         {
             Die();
+            return;
         }
+
+        PlayHitFeedback();
+    }
+
+    private void PlayHitFeedback()
+    {
+        if (hitSound != null)
+        {
+            PlaySound(hitSound);
+        }
+
+        if (spriteRenderer != null)
+        {
+            // Restart the flash if another projectile hits before it finishes.
+            if (hitFlashCoroutine != null)
+            {
+                StopCoroutine(hitFlashCoroutine);
+            }
+
+            hitFlashCoroutine = StartCoroutine(HitFlashRoutine());
+        }
+    }
+
+    private IEnumerator HitFlashRoutine()
+    {
+        spriteRenderer.color = hitFlashColor;
+
+        yield return new WaitForSeconds(hitFlashDuration);
+
+        spriteRenderer.color = originalColor;
+        hitFlashCoroutine = null;
     }
 
     private void Die()
     {
         isDead = true;
 
-        // Hide the empty health bar immediately.
-        if (healthSlider != null)
+        // Stop any unfinished hit flash and restore the sprite colour.
+        StopAllCoroutines();
+
+        if (spriteRenderer != null)
         {
-            healthSlider.gameObject.SetActive(false);
+            spriteRenderer.color = originalColor;
         }
 
-        Debug.Log("Boss defeated!", this);
+        // Stop the boss immediately so it cannot move or damage the player
+        // while its death effect is playing.
+        if (bossController != null)
+        {
+            bossController.enabled = false;
+        }
 
-        // We will replace this with the complete death sequence later.
-        Destroy(gameObject);
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.simulated = false;
+        }
+
+        if (bossCollider != null)
+        {
+            bossCollider.enabled = false;
+        }
+
+        if (healthBarObject != null)
+        {
+            healthBarObject.SetActive(false);
+        }
+
+        if (deathSound != null)
+        {
+            PlaySound(deathSound);
+        }
+
+        if (deathEffectPrefab != null)
+        {
+            GameObject deathEffect = Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+            deathEffect.transform.localScale *= deathEffectScale;
+        }
+
+        // Notify the BossLevel scene that the boss was defeated.
+        onBossDefeated?.Invoke();
+
+        Destroy(gameObject, destroyDelay);
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (clip == null) return;
+
+        // Play at the camera/AudioListener position to avoid 3D distance attenuation.
+        Vector3 soundPosition = Camera.main != null ? Camera.main.transform.position : transform.position;
+        AudioSource.PlayClipAtPoint(clip, soundPosition, 1f);
     }
 }
