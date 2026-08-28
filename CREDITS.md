@@ -1,3 +1,11 @@
+# Art Credits
+
+## Pixel Adventure 1
+- Creator: Pixel Frog
+- Source: Pixel Adventure 1 on itch.io
+- License: CC0 1.0 Universal
+- Attribution is not required under CC0 but is included for reference.
+
 # Audio Credits
 
 ## Punch, Slap, n’ Kick
