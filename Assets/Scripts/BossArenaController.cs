@@ -6,6 +6,7 @@ public class BossArenaController : MonoBehaviour
     [Header("Boss")]
     [SerializeField] private BossController bossController;
     [SerializeField] private GameObject bossHealthCanvas;
+    [SerializeField] private BossHealth bossHealth;
 
     [Header("Arena")]
     [SerializeField] private GameObject entranceGate;
@@ -68,6 +69,15 @@ public class BossArenaController : MonoBehaviour
         {
             levelGoalRenderer.enabled = false;
         }
+        if (bossHealth == null)
+        {
+            Debug.LogError("BossArenaController: Boss Health is not assigned.", this);
+        }
+        else
+        {
+            // Prevent the player from damaging the boss before entering the arena.
+            bossHealth.SetVulnerable(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,6 +96,11 @@ public class BossArenaController : MonoBehaviour
         if (bossHealthCanvas != null)
         {
             bossHealthCanvas.SetActive(true);
+        }
+
+        if (bossHealth != null)
+        {
+            bossHealth.SetVulnerable(true);
         }
 
         // Begin boss movement and charging.

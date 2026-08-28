@@ -40,6 +40,8 @@ public class BossHealth : MonoBehaviour, IDamageable
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
 
+    private bool isVulnerable = true;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -72,7 +74,7 @@ public class BossHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (damage <= 0 || isDead) return;
+        if (!isVulnerable || damage <= 0 || isDead) return;
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
 
@@ -178,5 +180,10 @@ public class BossHealth : MonoBehaviour, IDamageable
         // Play at the camera/AudioListener position to avoid 3D distance attenuation.
         Vector3 soundPosition = Camera.main != null ? Camera.main.transform.position : transform.position;
         AudioSource.PlayClipAtPoint(clip, soundPosition, 1f);
+    }
+
+    public void SetVulnerable(bool vulnerable)
+    {
+        isVulnerable = vulnerable;
     }
 }
