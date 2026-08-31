@@ -760,7 +760,8 @@ Transform:
   m_LocalPosition: {x: -85.99575, y: 0.8648497, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 545049435}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
@@ -795,6 +796,84 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!1001 &545049434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 519420032}
+    m_Modifications:
+    - target: {fileID: 1576457105187834817, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_Size.x
+      value: 30.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576457105187834817, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_Size.y
+      value: 10.141616
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576457105187834817, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8113757811677469686, guid: 83581e979ba5fc646afab2f9602593b3, type: 3}
+    - target: {fileID: 1576457105187834817, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545283195360280050, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+      propertyPath: m_Name
+      value: ScenicBackground
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+--- !u!4 &545049435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2305766138489380998, guid: aeda9850cfd3a5b498981a137e210fb1, type: 3}
+  m_PrefabInstance: {fileID: 545049434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &552464968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8755,7 +8834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1599766800
 SpriteRenderer:
   serializedVersion: 3

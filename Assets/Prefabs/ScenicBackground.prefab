@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2305766138489380998}
   - component: {fileID: 1576457105187834817}
+  - component: {fileID: 6851600237551435345}
+  - component: {fileID: 178129433867563934}
   m_Layer: 0
   m_Name: ScenicBackground
   m_TagString: Untagged
@@ -81,8 +83,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -100
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 71ac4534d0b862c40b93ba1a2edce880, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -8113757811677469686, guid: 83581e979ba5fc646afab2f9602593b3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,3 +94,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &6851600237551435345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545283195360280050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f837bb931f9d54d8ad97ea8886cddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraBackgroundFitter
+  overscan: 1.1
+--- !u!114 &178129433867563934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545283195360280050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1db67ed99de93458954a8facdd8129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundParallax
+  parallaxStrength: 0.006
+  maximumOffset: {x: 0.5, y: 0.2}
