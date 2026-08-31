@@ -128,12 +128,42 @@ public class BossController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player") || LevelGoal.isLevelComplete) return;
 
-        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        DamagePlayer(collision.gameObject);
+        MoveAwayFromPlayer(collision.transform);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player") || LevelGoal.isLevelComplete) return;
+
+        // PlayerHealth ignores calls during its invulnerability period.
+        // Continued contact causes damage again when that period expires.
+        DamagePlayer(collision.gameObject);
+    }
+
+    private void DamagePlayer(GameObject playerObject)
+    {
+        PlayerHealth playerHealth = playerObject.GetComponent<PlayerHealth>();
 
         if (playerHealth != null)
         {
-            // PlayerHealth handles invulnerability and death internally.
             playerHealth.TakeDamage(contactDamage);
         }
+    }
+
+    private void MoveAwayFromPlayer(Transform playerTransform)
+    {
+        // End the charge so the boss retreats at normal patrol speed
+        // instead of flying away at charge speed.
+        if (isCharging)
+        {
+            FinishCharge();
+        }
+
+        // Choose the horizontal direction away from the player.
+        direction = playerTransform.position.x >= transform.position.x ? -1f : 1f;
+
+        // Apply the retreat immediately rather than waiting for FixedUpdate.
+        rb.linearVelocity = new Vector2(direction * patrolSpeed, rb.linearVelocity.y);
     }
 }

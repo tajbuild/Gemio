@@ -57,6 +57,24 @@ public class PatrolEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // Turn away when meeting another patrol enemy.
+        PatrolEnemy otherEnemy = collision.gameObject.GetComponentInParent<PatrolEnemy>();
+
+        if (otherEnemy != null && otherEnemy != this)
+        {
+            MoveAwayFrom(otherEnemy.transform);
+            return;
+        }
+
+        // Turn away when reaching the boss.
+        BossHealth boss = collision.gameObject.GetComponentInParent<BossHealth>();
+
+        if (boss != null)
+        {
+            MoveAwayFrom(boss.transform);
+            return;
+        }
+        
         // Check if the object colliding with the enemy is the Player
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -96,7 +114,9 @@ public class PatrolEnemy : MonoBehaviour
                 if (playerHealth != null)
                 {
                     playerHealth.TakeDamage(contactDamage);
-                }               
+                }
+
+                MoveAwayFrom(collision.transform);               
             }
         }
     }
@@ -128,5 +148,37 @@ public class PatrolEnemy : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(wallCheckPoint.position, checkRadius);
         }
+    }
+
+    private void MoveAwayFrom(Transform otherTransform)
+    {
+        float horizontalDifference =
+            transform.position.x - otherTransform.position.x;
+
+        bool shouldMoveRight;
+
+        if (Mathf.Abs(horizontalDifference) < 0.01f)
+        {
+            // If both centers are nearly identical, simply reverse.
+            shouldMoveRight = !movingRight;
+        }
+        else
+        {
+            // Move in whichever direction leads away from the other object.
+            shouldMoveRight = horizontalDifference > 0f;
+        }
+
+        if (movingRight != shouldMoveRight)
+        {
+            movingRight = shouldMoveRight;
+            FlipSprite();
+        }
+
+        float currentSpeed = movingRight ? moveSpeed : -moveSpeed;
+
+        rb.linearVelocity = new Vector2(
+            currentSpeed,
+            Mathf.Min(rb.linearVelocity.y, 0f)
+        );
     }
 }
