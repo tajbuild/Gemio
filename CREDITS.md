@@ -26,3 +26,7 @@
 - Creator: Lisboa
 - Source: [OpenGameArt](https://opengameart.org/content/boss-fight-0)
 - License: [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+
+## Weapons
+“25 CC0 Bang / Firework SFX” by rubberduck — CC0 1.0
+https://opengameart.org/content/25-cc0-bang-firework-sfx

@@ -14,6 +14,10 @@ public class PlayerShooting : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float nextFireTime;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource shotAudioSource;
+    [SerializeField] private AudioClip shotSound;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -28,6 +32,16 @@ public class PlayerShooting : MonoBehaviour
         if (firePoint == null)
         {
             Debug.LogError("PlayerShooting is missing its Fire Point reference.", this);
+        }
+
+        if (shotAudioSource == null)
+        {
+            Debug.LogError("PlayerShooting: Shot Audio Source is not assigned.", this);
+        }
+
+        if (shotSound == null)
+        {
+            Debug.LogError("PlayerShooting: Shot Sound is not assigned.", this);
         }
     }
 
@@ -69,5 +83,10 @@ public class PlayerShooting : MonoBehaviour
 
         EnergyProjectile projectile = Instantiate(projectilePrefab, worldSpawnPosition, Quaternion.identity);
         projectile.Launch(shootDirection);
+
+        if (shotAudioSource != null && shotSound != null)
+        {
+            shotAudioSource.PlayOneShot(shotSound);
+        }
     }
 }

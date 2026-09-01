@@ -42,6 +42,12 @@ public class BossHealth : MonoBehaviour, IDamageable
 
     private bool isVulnerable = true;
 
+    private Animator animator;
+
+    [Header("Death Animation")]
+    [SerializeField, Min(0)] private int deathFlashCount = 3;
+    [SerializeField, Min(0.01f)] private float deathFlashInterval = 0.08f;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -50,6 +56,8 @@ public class BossHealth : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         bossCollider = GetComponent<Collider2D>();
         bossController = GetComponent<BossController>();
+        animator = GetComponent<Animator>();
+
 
         if (spriteRenderer != null)
         {
@@ -69,6 +77,11 @@ public class BossHealth : MonoBehaviour, IDamageable
         if (healthBarObject == null)
         {
             Debug.LogError("BossHealth: Health Bar Object is not assigned.", this);
+        }
+
+        if (animator == null)
+        {
+            Debug.LogError("BossHealth could not find the Animator.", this);
         }
     }
 
@@ -125,7 +138,7 @@ public class BossHealth : MonoBehaviour, IDamageable
     {
         isDead = true;
 
-        // Stop any unfinished hit flash and restore the sprite colour.
+        // Cancel an unfinished normal-hit flash.
         StopAllCoroutines();
 
         if (spriteRenderer != null)
@@ -133,8 +146,8 @@ public class BossHealth : MonoBehaviour, IDamageable
             spriteRenderer.color = originalColor;
         }
 
-        // Stop the boss immediately so it cannot move or damage the player
-        // while its death effect is playing.
+        // Stop movement and contact damage immediately while allowing
+        // the sprite animation to continue.
         if (bossController != null)
         {
             bossController.enabled = false;
@@ -156,21 +169,16 @@ public class BossHealth : MonoBehaviour, IDamageable
             healthBarObject.SetActive(false);
         }
 
-        if (deathSound != null)
+        // Override the running state with the death animation.
+        if (animator != null)
         {
-            PlaySound(deathSound);
+            animator.SetBool("isMoving", false);
+            animator.SetTrigger("Die");
         }
 
-        if (deathEffectPrefab != null)
-        {
-            GameObject deathEffect = Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
-            deathEffect.transform.localScale *= deathEffectScale;
-        }
+        PlaySound(deathSound);
 
-        // Notify the BossLevel scene that the boss was defeated.
-        onBossDefeated?.Invoke();
-
-        Destroy(gameObject, destroyDelay);
+        StartCoroutine(DeathRoutine());
     }
 
     private void PlaySound(AudioClip clip)
@@ -185,5 +193,54 @@ public class BossHealth : MonoBehaviour, IDamageable
     public void SetVulnerable(bool vulnerable)
     {
         isVulnerable = vulnerable;
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        float flashingDuration = deathFlashCount * deathFlashInterval * 2f;
+
+        // Pulse between the configured hit color and the original color.
+        for (int i = 0; i < deathFlashCount; i++)
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = hitFlashColor;
+            }
+
+            yield return new WaitForSeconds(deathFlashInterval);
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = originalColor;
+            }
+
+            yield return new WaitForSeconds(deathFlashInterval);
+        }
+
+        // Allow the death animation to finish before the explosion.
+        float remainingDelay = Mathf.Max(0f, destroyDelay - flashingDuration);
+
+        yield return new WaitForSeconds(remainingDelay);
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
+
+        if (deathEffectPrefab != null)
+        {
+            GameObject deathEffect = Instantiate(
+                deathEffectPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+
+            deathEffect.transform.localScale *= deathEffectScale;
+        }
+
+        // Open the arena and reveal the goal only after the sequence finishes.
+        onBossDefeated?.Invoke();
+
+        Destroy(gameObject);
     }
 }

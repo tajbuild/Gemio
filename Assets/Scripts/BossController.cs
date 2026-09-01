@@ -29,10 +29,13 @@ public class BossController : MonoBehaviour
     private float chargeEndTime;
     private bool isCharging;
 
+    private Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -62,6 +65,12 @@ public class BossController : MonoBehaviour
         if (LevelGoal.isLevelComplete)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+
+            if (animator != null)
+            {
+                animator.SetBool("isMoving", false);
+            }
+            
             return;
         }
 
@@ -82,6 +91,14 @@ public class BossController : MonoBehaviour
         float currentSpeed = isCharging ? chargeSpeed : patrolSpeed;
 
         rb.linearVelocity = new Vector2(direction * currentSpeed, rb.linearVelocity.y);
+
+        if (animator != null)
+        {
+            animator.SetBool(
+                "isMoving",
+                Mathf.Abs(rb.linearVelocity.x) > 0.1f
+            );
+        }
 
         // Flip only the sprite so the world-space health bar stays readable.
         spriteRenderer.flipX = direction < 0f;

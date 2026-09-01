@@ -375,7 +375,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -491,6 +491,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6764690778721140834, guid: 72479e23c07fcac4e8085090ef254b3c, type: 3}
   firePoint: {fileID: 2880805455948855556}
   fireCooldown: 0.35
+  shotAudioSource: {fileID: 6033144865467874204}
+  shotSound: {fileID: 8300000, guid: 4739a4740bd144a4f919c2beeced4b47, type: 3}
 --- !u!1 &6050360068197135777
 GameObject:
   m_ObjectHideFlags: 0
